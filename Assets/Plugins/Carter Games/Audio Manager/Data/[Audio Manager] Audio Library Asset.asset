@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0876a39f507e45142a645a4fe9dd37df, type: 3}
+  m_Name: '[Audio Manager] Audio Library Asset'
+  m_EditorClassIdentifier: CarterGames.AudioManager.Runtime::CarterGames.Assets.AudioManager.AudioLibrary
+  library:
+    list:
+    - key: Typewriter sound 1-b9caa4b7-ef6d-4f50-b04e-55b4e75f273d
+      value:
+        key: Typewriter sound 1
+        id: Typewriter sound 1-b9caa4b7-ef6d-4f50-b04e-55b4e75f273d
+        defaultKey: Typewriter sound 1-b9caa4b7-ef6d-4f50-b04e-55b4e75f273d
+        value: {fileID: 8300000, guid: 0dae724cb893d234693f768c9f4c20b9, type: 3}
+        path: Assets/Samples/Text Animator for Unity by Febucci/3.14.0/Typewriter
+          Sounds Example/Literal Typewriter Sounds/Typewriter sound 1.ogg
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: Typewriter sound 2-b97d9d96-3571-410c-946a-65ea9ebaab33
+      value:
+        key: Typewriter sound 2
+        id: Typewriter sound 2-b97d9d96-3571-410c-946a-65ea9ebaab33
+        defaultKey: Typewriter sound 2-b97d9d96-3571-410c-946a-65ea9ebaab33
+        value: {fileID: 8300000, guid: d3c5a7d075f462748a9f67e19486a473, type: 3}
+        path: Assets/Samples/Text Animator for Unity by Febucci/3.14.0/Typewriter
+          Sounds Example/Literal Typewriter Sounds/Typewriter sound 2.ogg
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: Typewriter sound 3-cea9543c-4989-4252-aa30-9a697e06d35e
+      value:
+        key: Typewriter sound 3
+        id: Typewriter sound 3-cea9543c-4989-4252-aa30-9a697e06d35e
+        defaultKey: Typewriter sound 3-cea9543c-4989-4252-aa30-9a697e06d35e
+        value: {fileID: 8300000, guid: 27be0fc570c61ad4b8c2f9a60fb87896, type: 3}
+        path: Assets/Samples/Text Animator for Unity by Febucci/3.14.0/Typewriter
+          Sounds Example/Literal Typewriter Sounds/Typewriter sound 3.ogg
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+  groups:
+    list: []
+  mixers:
+    list: []
+  categories: []
+  tags: []
