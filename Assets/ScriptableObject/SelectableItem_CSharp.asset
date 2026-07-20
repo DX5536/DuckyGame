@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e35ef4d051bd544a9d247d2a12d645, type: 3}
+  m_Name: SelectableItem_CSharp
+  m_EditorClassIdentifier: Assembly-CSharp::SelectableItem_ScriptableObject
+  itemName: CSharp
+  itemDescription: C#
+  itemIMG: {fileID: 4917691528165128808, guid: f03b17973c44db048af20fb598a5f1ae, type: 3}

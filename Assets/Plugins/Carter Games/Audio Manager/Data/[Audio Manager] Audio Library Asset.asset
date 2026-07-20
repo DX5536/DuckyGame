@@ -94,6 +94,63 @@ MonoBehaviour:
         metaData:
           category: 
           tags: []
+    - key: glass_002-5d28e3a5-7695-428f-b199-fef92951f8d2
+      value:
+        key: glass_002
+        id: glass_002-5d28e3a5-7695-428f-b199-fef92951f8d2
+        defaultKey: glass_002-5d28e3a5-7695-428f-b199-fef92951f8d2
+        value: {fileID: 8300000, guid: c157022e843af724fb09c2d0e75d6827, type: 3}
+        path: Assets/Sounds/glass_002.ogg
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: drop_003-d1c82f34-d881-4912-ad86-7aa056f696ea
+      value:
+        key: drop_003
+        id: drop_003-d1c82f34-d881-4912-ad86-7aa056f696ea
+        defaultKey: drop_003-d1c82f34-d881-4912-ad86-7aa056f696ea
+        value: {fileID: 8300000, guid: 5c2152bcfc4e7614597344bb281d2544, type: 3}
+        path: Assets/Sounds/drop_003.ogg
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
+    - key: select_008-6f9b9990-ce2f-4b9a-a7e4-3318099dc713
+      value:
+        key: select_008
+        id: select_008-6f9b9990-ce2f-4b9a-a7e4-3318099dc713
+        defaultKey: select_008-6f9b9990-ce2f-4b9a-a7e4-3318099dc713
+        value: {fileID: 8300000, guid: 4b917db09314dec4bb167d7579e23a8b, type: 3}
+        path: Assets/Sounds/select_008.ogg
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
   groups:
     list: []
   mixers:

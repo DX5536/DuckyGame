@@ -327,6 +327,13 @@
       },
       "hash": "13f258df535f432de0517b2db519af9a19561a0b"
     },
+    "games.carter.audiomanager": {
+      "version": "https://github.com/CarterGames/AudioManager.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "44bb92407120032b1bacee376ec182b303c940b2"
+    },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
       "depth": 0,
