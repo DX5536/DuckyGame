@@ -1,13 +1,23 @@
 ﻿title: Start
 color: red
-position: 275,-2
+position: -211,-41
 ---
-MC: This is a start of a new love!
-<<jump DuckyGame_TestScript>>
+MC: This is a scene!
 ===
-title: DuckyGame_TestScript
-position: 271,217
+title: OnCollide_Test
+position: -239,258
 ---
-MC: This is a test!
-MC: It has been a while since I use Yarn Spinner!
+MC: I collides with NPC!
+===
+title: OnInteract_Test
+color: green
+position: 39,-47
+---
+NPC: Why are you running?!
+===
+
+title: OnExit_Test
+position: 6,155
+---
+MC: K,BYE!!!
 ===

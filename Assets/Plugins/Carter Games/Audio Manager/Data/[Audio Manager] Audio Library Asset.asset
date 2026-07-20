@@ -74,6 +74,26 @@ MonoBehaviour:
         metaData:
           category: 
           tags: []
+    - key: dott sample sound-2b79d2b9-cf5a-4bd0-8744-7053ee0b31e0
+      value:
+        key: dott sample sound
+        id: dott sample sound-2b79d2b9-cf5a-4bd0-8744-7053ee0b31e0
+        defaultKey: dott sample sound-2b79d2b9-cf5a-4bd0-8744-7053ee0b31e0
+        value: {fileID: 8300000, guid: 287b58930cfd54cc299bf0f41dbfb4dc, type: 3}
+        path: Assets/Plugins/DOTweenTimeline/Sample/Dott Sample Assets/dott sample
+          sound.wav
+        dynamicStartTime:
+          time: 0
+          threshold: 0
+          option: 1
+          tabPos: 1
+        defaultSettings:
+          volume: 1
+          pitch: 1
+        showDynamicTime: 0
+        metaData:
+          category: 
+          tags: []
   groups:
     list: []
   mixers:
