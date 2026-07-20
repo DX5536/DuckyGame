@@ -1,0 +1,13 @@
+﻿title: Start
+color: red
+position: 275,-2
+---
+MC: This is a start of a new love!
+<<jump DuckyGame_TestScript>>
+===
+title: DuckyGame_TestScript
+position: 271,217
+---
+MC: This is a test!
+MC: It has been a while since I use Yarn Spinner!
+===
