@@ -17,7 +17,7 @@ MonoBehaviour:
   drawActivationToggle: 1
   icons:
     enabled: 1
-    aligned: 0
+    aligned: 1
     pairs: []
   prefabsData:
     enabled: 0
@@ -27,8 +27,8 @@ MonoBehaviour:
     color: {r: 0, g: 0, b: 0, a: 0.08}
   separator:
     enabled: 1
-    startString: '>'
-    color: {r: 0, g: 1, b: 1, a: 0.15}
+    startString: '#'
+    color: {r: 0, g: 1, b: 1, a: 0.11764706}
   tree:
     enabled: 1
     drawOverlayOnColoredPrefabs: 1
