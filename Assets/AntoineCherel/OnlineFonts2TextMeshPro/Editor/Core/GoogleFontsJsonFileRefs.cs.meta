@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 465f27d92641344679a2baf5c52f6fc6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 323130
+  packageName: Online fonts 2 TextMesh Pro
+  packageVersion: 1.1
+  assetPath: Assets/AntoineCherel/OnlineFonts2TextMeshPro/Editor/Core/GoogleFontsJsonFileRefs.cs
+  uploadId: 794244

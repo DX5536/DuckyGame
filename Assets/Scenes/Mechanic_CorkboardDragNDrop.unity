@@ -1156,6 +1156,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d5a291d1652e1547af3922a3746d787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager_System
+--- !u!114 &726368687 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8767949192948331451, guid: 19b26981d1aa8de499f698e85728636c, type: 3}
+  m_PrefabInstance: {fileID: 6529438908025725864}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11da259540926094287e9d5c61875954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &734033568
 GameObject:
   m_ObjectHideFlags: 0
@@ -3220,6 +3231,22 @@ PrefabInstance:
     - target: {fileID: 1749472017312550532, guid: 19b26981d1aa8de499f698e85728636c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342152357824218930, guid: 19b26981d1aa8de499f698e85728636c, type: 3}
+      propertyPath: manualPlayer
+      value: 
+      objectReference: {fileID: 726368687}
+    - target: {fileID: 4342152357824218930, guid: 19b26981d1aa8de499f698e85728636c, type: 3}
+      propertyPath: entries.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342152357824218930, guid: 19b26981d1aa8de499f698e85728636c, type: 3}
+      propertyPath: entries.Array.data[3].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342152357824218930, guid: 19b26981d1aa8de499f698e85728636c, type: 3}
+      propertyPath: entries.Array.data[3].volume
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

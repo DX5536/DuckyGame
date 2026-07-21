@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 93ba9c10c9cca42389df89741d700f6d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 323130
+  packageName: Online fonts 2 TextMesh Pro
+  packageVersion: 1.1
+  assetPath: Assets/AntoineCherel/OnlineFonts2TextMeshPro/Editor/Core/OF2TMP_FontAssetCreator.cs
+  uploadId: 794244

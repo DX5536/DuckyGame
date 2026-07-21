@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: c0cc64727a76f4fc1b2d59459eb2eb70
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 13804, guid: 0000000000000000e000000000000000, type: 0}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 323130
+  packageName: Online fonts 2 TextMesh Pro
+  packageVersion: 1.1
+  assetPath: Assets/AntoineCherel/OnlineFonts2TextMeshPro/Editor/Core/UIToolkit/OnlineFonts2TextMeshProWindow.uxml
+  uploadId: 794244
