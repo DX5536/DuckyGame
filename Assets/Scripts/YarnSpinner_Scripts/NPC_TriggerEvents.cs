@@ -24,12 +24,19 @@ public class NPC_TriggerEvents : MonoBehaviour
         if (box != null) box.isTrigger = true;
     }
 
+    private void OnEnable()
+    {
+        // Make sure the interact action is live. Not disabled on OnDisable because the same
+        // InputActionReference is likely shared across many NPCs.
+        keyBindings?.InteractObject?.action?.Enable();
+    }
+
     private void Update()
     {
-        if (!playerInside) return;
-        if (keyBindings == null || Keyboard.current == null) return;
+        if (!playerInside || keyBindings == null) return;
 
-        if (Keyboard.current[keyBindings.InteractObject].wasPressedThisFrame)
+        InputAction interactAction = keyBindings.InteractObject != null ? keyBindings.InteractObject.action : null;
+        if (interactAction != null && interactAction.WasPressedThisFrame())
         {
             onInteract?.Invoke();
         }

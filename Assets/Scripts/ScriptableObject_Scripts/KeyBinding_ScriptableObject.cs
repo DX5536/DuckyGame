@@ -12,67 +12,54 @@ public class KeyBinding_ScriptableObject : ScriptableObject
         set { isMoving = value; }
     }
 
-    [Header("Move Left")]
-    [SerializeField] private Key moveLeft = Key.A;
-    public Key MoveLeft
+    [Header("Move (Value / Vector2)")]
+    [Tooltip("Read as Vector2; only the X component is used for side-scroller movement. " +
+             "Bind to a 2D Vector composite (WASD / Arrows), a gamepad stick, or an on-screen joystick.")]
+    [SerializeField] private InputActionReference move;
+    public InputActionReference Move
     {
-        get { return moveLeft; }
-        set { moveLeft = value; }
+        get { return move; }
     }
 
-    [Header("Move Right")]
-    [SerializeField] private Key moveRight = Key.D;
-    public Key MoveRight
-    {
-        get { return moveRight; }
-        set { moveRight = value; }
-    }
-
-    [Header("Jump")]
-    [SerializeField] private Key jump = Key.Space;
-    public Key Jump
+    [Header("Jump (Button)")]
+    [SerializeField] private InputActionReference jump;
+    public InputActionReference Jump
     {
         get { return jump; }
-        set { jump = value; }
     }
 
-    [Header("Crouch")]
-    [SerializeField] private Key crouch = Key.LeftCtrl;
-    public Key Crouch
+    [Header("Crouch (Button - read as held)")]
+    [SerializeField] private InputActionReference crouch;
+    public InputActionReference Crouch
     {
         get { return crouch; }
-        set { crouch = value; }
     }
 
-    [Header("Interact Object")]
-    [SerializeField] private Key interactObject = Key.E;
-    public Key InteractObject
+    [Header("Interact Object (Button)")]
+    [SerializeField] private InputActionReference interactObject;
+    public InputActionReference InteractObject
     {
         get { return interactObject; }
-        set { interactObject = value; }
     }
 
-    [Header("Inventory")]
-    [SerializeField] private Key inventory = Key.I;
-    public Key Inventory
+    [Header("Inventory (Button)")]
+    [SerializeField] private InputActionReference inventory;
+    public InputActionReference Inventory
     {
         get { return inventory; }
-        set { inventory = value; }
     }
 
-    [Header("Notepad")]
-    [SerializeField] private Key notepad = Key.N;
-    public Key Notepad
+    [Header("Notepad (Button)")]
+    [SerializeField] private InputActionReference notepad;
+    public InputActionReference Notepad
     {
         get { return notepad; }
-        set { notepad = value; }
     }
 
-    [Header("Pause")]
-    [SerializeField] private Key pause = Key.Escape;
-    public Key Pause
+    [Header("Pause (Button)")]
+    [SerializeField] private InputActionReference pause;
+    public InputActionReference Pause
     {
         get { return pause; }
-        set { pause = value; }
     }
 }

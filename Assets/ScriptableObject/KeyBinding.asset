@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f41bb30122ff01488d2c137f573143f, type: 3}
   m_Name: KeyBinding
   m_EditorClassIdentifier: Assembly-CSharp::KeyBinding_ScriptableObject
-  moveLeft: 15
-  moveRight: 18
-  jump: 1
-  crouch: 17
-  interactObject: 19
-  inventory: 23
-  notepad: 3
-  pause: 60
+  isMoving: 1
+  move: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  jump: {fileID: -2099379676528639254, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  crouch: {fileID: 7040659881675835329, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  interactObject: {fileID: 1781555164194001046, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  inventory: {fileID: -1771717413030489932, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  notepad: {fileID: 96841878239971982, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  pause: {fileID: 1235066969123648702, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
