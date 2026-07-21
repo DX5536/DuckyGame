@@ -73,9 +73,24 @@ public class AudioManager_System : MonoBehaviour
             return;
         }
 
-        AudioPlayer player = entry.isGroup
-            ? AudioManager.PlayGroup(entry.request, entry.volume, entry.pitch)
-            : AudioManager.Play(entry.request, entry.volume, entry.pitch);
+        AudioPlayer player;
+        try
+        {
+            player = entry.isGroup
+                ? AudioManager.PlayGroup(entry.request, entry.volume, entry.pitch)
+                : AudioManager.Play(entry.request, entry.volume, entry.pitch);
+        }
+        catch (MissingReferenceException ex)
+        {
+            // Carter's internal pool holds a destroyed AudioPlayer reference. Almost always caused by
+            // Unity's "Enter Play Mode Options" with Reload Domain disabled - static pool state persists
+            // across play sessions while the pooled GameObjects get destroyed.
+            // Fix: Project Settings > Editor > Enter Play Mode Options -> tick "Reload Domain".
+            Debug.LogError($"[{name}] AudioManager_System: Carter's audio pool is holding a destroyed reference. " +
+                           $"Enable 'Reload Domain' in Project Settings > Editor > Enter Play Mode Options, or restart the Editor. " +
+                           $"({ex.Message})", this);
+            return;
+        }
 
         // Null when Carter's AudioManager is globally disabled (Settings.PlayAudioState == Disabled).
         if (player == null) return;
