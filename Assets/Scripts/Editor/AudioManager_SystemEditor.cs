@@ -59,6 +59,16 @@ public sealed class AudioManager_SystemEditor : Editor
         EditorGUILayout.Space(10);
         EditorGUILayout.PropertyField(warnProp);
 
+        // Manual AudioPlayer section - these fields exist on the target but the custom editor
+        // must draw them explicitly, otherwise they stay hidden.
+        EditorGUILayout.Space(10);
+        EditorGUILayout.LabelField("Manual AudioPlayer (optional)", EditorStyles.boldLabel);
+
+        SerializedProperty dispatcherProp = serializedObject.FindProperty("audioDispatcherGO");
+        SerializedProperty manualProp = serializedObject.FindProperty("manualPlayer");
+        if (dispatcherProp != null) EditorGUILayout.PropertyField(dispatcherProp);
+        if (manualProp != null) EditorGUILayout.PropertyField(manualProp);
+
         serializedObject.ApplyModifiedProperties();
     }
 

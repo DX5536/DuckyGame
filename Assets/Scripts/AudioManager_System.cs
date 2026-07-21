@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Reflection;
 using CarterGames.Assets.AudioManager;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,9 +9,14 @@ using UnityEngine.Events;
 /// Define named audio "entries" in the Inspector; call Play("key") from any UnityEvent.
 /// Each entry keeps its own Started / Looped / Completed UnityEvents so downstream logic
 /// can react to a specific sound finishing (same benefit as InspectorAudioClipPlayer).
+///
+/// If a Manual AudioPlayer is assigned, Play() drives it directly instead of going through
+/// Carter's static pool - useful when the pool holds stale references (e.g. Fast Play Mode
+/// without Reload Domain).
 /// </summary>
 public class AudioManager_System : MonoBehaviour
-{
+{  
+
     [System.Serializable]
     public class AudioEntry
     {
@@ -37,8 +43,18 @@ public class AudioManager_System : MonoBehaviour
     [Tooltip("Log a warning when Play() is called with a key not present in the list above.")]
     [SerializeField] private bool warnOnMissingKey = true;
 
+    [Header("Manual AudioPlayer (optional)")]
+    [Tooltip("If assigned, Play() drives THIS AudioPlayer directly instead of Carter's pooled static AudioManager.Play. " +
+             "Assign the AudioPlayer component sitting on your scene GameObject (e.g. the +[AudioManager] - Audio Player prefab). " +
+             "Leave empty to use the pool.")]
+    [SerializeField] private AudioPlayer manualPlayer;
+
     // Fast lookup so Play("hover") is O(1) instead of scanning the list every call.
     private Dictionary<string, AudioEntry> lookup;
+
+    // Cached reflection handles for the two Carter-private setters we need to bypass.
+    private static PropertyInfo isInitializedProp;
+    private static PropertyInfo recycleOnCompleteProp;
 
     private void Awake()
     {
@@ -73,6 +89,52 @@ public class AudioManager_System : MonoBehaviour
             return;
         }
 
+        if (manualPlayer != null)
+        {
+            PlayWithManualPlayer(entry);
+        }
+        else
+        {
+            PlayWithPool(entry);
+        }
+    }
+
+    // ---------- Manual player path (bypasses Carter's pool) ----------
+
+    private void PlayWithManualPlayer(AudioEntry entry)
+    {
+        // Carter's Initialize is a one-shot (early-returns if IsInitialized is true), so we reset
+        // it via reflection to let us switch clips on the same scene AudioPlayer between calls.
+        SetIsInitialized(manualPlayer, false);
+
+        var settings = new AudioClipSettings(new IEditModule[]
+        {
+            new VolumeEdit(entry.volume),
+            new PitchEdit(entry.pitch)
+        });
+
+        if (entry.isGroup) manualPlayer.InitializeGroup(entry.request, settings);
+        else manualPlayer.Initialize(entry.request, settings);
+
+        // Initialize sets RecycleOnComplete = true. Flip it off so the player won't try to
+        // reparent itself to Carter's DontDestroyOnLoad pool when the clip finishes.
+        SetRecycleOnComplete(manualPlayer, false);
+
+        // The Evts on a reused player accumulate subscribers; clear before re-adding for THIS entry.
+        manualPlayer.Started.Clear();
+        manualPlayer.Looped.Clear();
+        manualPlayer.Completed.Clear();
+        manualPlayer.Started.Add(() => entry.onStarted?.Invoke());
+        manualPlayer.Looped.Add(() => entry.onLooped?.Invoke());
+        manualPlayer.Completed.Add(() => entry.onCompleted?.Invoke());
+
+        manualPlayer.Play();
+    }
+
+    // ---------- Pool path (original behavior) ----------
+
+    private void PlayWithPool(AudioEntry entry)
+    {
         AudioPlayer player;
         try
         {
@@ -82,23 +144,40 @@ public class AudioManager_System : MonoBehaviour
         }
         catch (MissingReferenceException ex)
         {
-            // Carter's internal pool holds a destroyed AudioPlayer reference. Almost always caused by
-            // Unity's "Enter Play Mode Options" with Reload Domain disabled - static pool state persists
-            // across play sessions while the pooled GameObjects get destroyed.
-            // Fix: Project Settings > Editor > Enter Play Mode Options -> tick "Reload Domain".
-            Debug.LogError($"[{name}] AudioManager_System: Carter's audio pool is holding a destroyed reference. " +
-                           $"Enable 'Reload Domain' in Project Settings > Editor > Enter Play Mode Options, or restart the Editor. " +
-                           $"({ex.Message})", this);
+            Debug.LogError($"[{name}] AudioManager_System: Carter's audio pool holds a destroyed reference. " +
+                           $"Fix by enabling 'Reload Domain' in Project Settings > Editor > Enter Play Mode Options, " +
+                           $"OR assign a Manual AudioPlayer on this component. ({ex.Message})", this);
             return;
         }
 
-        // Null when Carter's AudioManager is globally disabled (Settings.PlayAudioState == Disabled).
         if (player == null) return;
 
-        // Wire this specific playback's callbacks back to the entry's UnityEvents.
-        // A fresh AudioPlayer is created each Play call, so no double-fire across plays.
+        // Pool gives us a fresh player each call, so no need to clear old subscribers first.
         player.Started.Add(() => entry.onStarted?.Invoke());
         player.Looped.Add(() => entry.onLooped?.Invoke());
         player.Completed.Add(() => entry.onCompleted?.Invoke());
+    }
+
+    // ---------- Reflection helpers ----------
+
+    private static void SetIsInitialized(AudioPlayer player, bool value)
+    {
+        if (isInitializedProp == null)
+        {
+            isInitializedProp = typeof(AudioPlayer).GetProperty("IsInitialized",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+        }
+        isInitializedProp?.SetValue(player, value);
+    }
+
+    private static void SetRecycleOnComplete(AudioPlayer player, bool value)
+    {
+        if (recycleOnCompleteProp == null)
+        {
+            // Property getter is public, setter is private - GetProperty finds it under Public flag.
+            recycleOnCompleteProp = typeof(AudioPlayer).GetProperty("RecycleOnComplete",
+                BindingFlags.Public | BindingFlags.Instance);
+        }
+        recycleOnCompleteProp?.SetValue(player, value);
     }
 }
