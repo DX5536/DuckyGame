@@ -1,23 +1,82 @@
 ﻿title: Start
 color: red
-position: -211,-41
+position: -420,-140
 ---
 MC: This is a scene!
 ===
-title: OnCollide_Test
-position: -239,258
+title: OnCollide_NPC_00
+position: -140,-60
 ---
-MC: I collides with NPC!
+MC: I collides with NPC_00!
 ===
-title: OnInteract_Test
+title: OnInteract_NPC_00
 color: green
-position: 39,-47
+position: -720,80
 ---
-NPC: Why are you running?!
+NPC_00: Do you like me? ^ 3^
+ -> MC: Yes, I like you!
+    <<jump NPC_00_AnswerYes>>
+-> MC: No I hate your ass!!!
+    <<jump NPC_00_AnswerNo>>
 ===
 
-title: OnExit_Test
-position: 6,155
+title: OnExit_NPC_00
+position: -720,380
 ---
 MC: K,BYE!!!
+===
+
+title: NPC_00_AnswerNo
+position: -840,240
+---
+<<decrease_affection NPC0 2>>
+NPC_00: I hate you :((
+===
+
+title: NPC_00_AnswerYes
+position: -600,240
+---
+<<increase_affection NPC0 2>>
+NPC_00: Yah <3
+===
+
+title: OnCollide_NPC_01
+position: -720,-80
+---
+MC: I collides with NPC_01! #line:081e11a 
+===
+title: OnInteract_NPC_01
+color: green
+position: -140,80
+---
+NPC_01: Do you hate that loser over there? #line:0655a00 
+-> MC: Of course! What a boring loser #line:09d8c27 
+    <<jump NPC_01_AnswerYes>>
+-> MC: What? No! The dude is cool! #line:0bc3c3e 
+    <<jump NPC_01_AnswerNo>>
+
+===
+
+title: OnExit_NPC_01
+position: -140,400
+---
+MC: Tschüss!!! #line:0067fb4 
+===
+
+title: NPC_01_AnswerNo
+position: -20,240
+---
+<<decrease_affection NPC1 2>>
+<<increase_affection NPC0 2>>
+NPC_00: You are so cool!
+NPC_01: The player is such a loser!
+===
+
+title: NPC_01_AnswerYes
+position: -240,240
+---
+<<decrease_affection NPC0 2>>
+<<increase_affection NPC1 2>>
+NPC_00: YOU ARE A MEANIE!!!
+NPC_01: Nah, you are very gangstar!
 ===

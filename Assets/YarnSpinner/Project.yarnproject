@@ -1,15 +1,29 @@
 {
-  "projectFileVersion": 4,
-  "sourceFiles": [
-    "**/*.yarn"
-  ],
-  "excludeFiles": [
-    "**/*~/*",
-    "./Samples/Yarn Spinner*/*"
-  ],
-  "localisation": {},
-  "baseLanguage": "en",
-  "compilerOptions": {
-    "diagnosticsSeverity": {}
-  }
+    "projectFileVersion": 4,
+    "sourceFiles": [
+        "**/*.yarn"
+    ],
+    "excludeFiles": [
+        "**/*~/*",
+        "./Samples/Yarn Spinner*/*"
+    ],
+    "localisation": {},
+    "baseLanguage": "en",
+    "compilerOptions": {
+        "diagnosticsSeverity": {},
+        "allowPreviewFeatures": true
+    },
+    "definitions": [
+        "c:\\Users\\Hai Lam\\Desktop\\Personal_GitKraken_Repo\\DuckyGame\\ProjectSettings\\Packages\\dev.yarnspinner\\Assembly-CSharp-generated.ysls.json"
+    ],
+    "editorOptions": {
+        "yarnScriptEditor": {
+            "projectGraphPositions": {
+                "DuckyGame_TestScript.yarn": {
+                    "x": -520,
+                    "y": 40
+                }
+            }
+        }
+    }
 }

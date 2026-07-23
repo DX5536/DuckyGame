@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "InteractableNPC", menuName = "ScriptableObject/InteractableNPC", order = 3)]
 public class InteractableNPC : ScriptableObject
 {
+
     [Header("NPC Name")]
     [SerializeField] private string npcName;
     public string NPCName
@@ -67,12 +68,29 @@ public class InteractableNPC : ScriptableObject
         get { return npcWalkAnim; }
     }
 
-    [Header("Affection Value (clamped -20 to +20)")]
+    
+
+    [Header("Affection Value (clamped -20 to +20) with debugging bool Value")]
+    [SerializeField]
+    private bool resetAffection_DEBUG = true;
+    public bool ResetAffection_DEBUG
+    {
+        get { return resetAffection_DEBUG; }
+    }
+
     [Range(-20, 20)]
     [SerializeField] private int affectionValue;
     public int AffectionValue
     {
         get { return affectionValue; }
         set { affectionValue = Mathf.Clamp(value, -20, 20); }
+    }
+
+    private void OnEnable()
+    {
+        if (resetAffection_DEBUG)
+        {
+            AffectionValue = 0;
+        }
     }
 }

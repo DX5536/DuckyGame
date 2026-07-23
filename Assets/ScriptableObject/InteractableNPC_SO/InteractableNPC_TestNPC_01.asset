@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7a3259135009864893ace7a976598d6, type: 3}
-  m_Name: InteractableNPC_TestNPC
+  m_Name: InteractableNPC_TestNPC_01
   m_EditorClassIdentifier: Assembly-CSharp::InteractableNPC
-  npcName: TestNPC
+  npcName: NPC1
   npcDescription:
   - I am a test NPC
   npcSprite:
