@@ -15,9 +15,8 @@ public class DOTween_ReverseTween : MonoBehaviour
 
     private void Start()
     {
-        // Initialize at Start so the target sits at its true starting position when DOTween
-        // captures each tween's "from" value. Also disable AutoKill so the Sequence/tween
-        // survives the forward play and can be reversed later.
+        // Initialize at Start so the target sits at its true starting position when DOTween captures each tween's "from" value.
+        // Also disable AutoKill so the Sequence/tween survives the forward play and can be reversed later.
         GameObject go = target != null ? target : gameObject;
         timelines = go.GetComponents<DOTweenTimeline>();
         animations = go.GetComponents<DOTweenAnimation>();
@@ -50,8 +49,7 @@ public class DOTween_ReverseTween : MonoBehaviour
         }
     }
 
-    // Plays the tween forward. WIRE YOUR OnCollide UnityEvent TO THIS instead of DOTweenTimeline.DOPlay(),
-    // otherwise the direction stays "backward" after a reverse and the cycle breaks.
+    // Plays the tween normally. WIRE YOUR OnCollide UnityEvent TO THIS instead of DOTweenTimeline.DOPlay(), otherwise the direction stays "backward" after a reverse and the cycle breaks.
     public void PlayForward()
     {
         if (verboseLogging) Debug.Log($"[{name}] PlayForward()", this);

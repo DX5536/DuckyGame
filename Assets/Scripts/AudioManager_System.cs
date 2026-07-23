@@ -4,16 +4,14 @@ using CarterGames.Assets.AudioManager;
 using UnityEngine;
 using UnityEngine.Events;
 
-/// <summary>
-/// Scene-level dispatcher on top of Carter Games' AudioManager.
-/// Define named audio "entries" in the Inspector; call Play("key") from any UnityEvent.
-/// Each entry keeps its own Started / Looped / Completed UnityEvents so downstream logic
-/// can react to a specific sound finishing (same benefit as InspectorAudioClipPlayer).
-///
-/// If a Manual AudioPlayer is assigned, Play() drives it directly instead of going through
-/// Carter's static pool - useful when the pool holds stale references (e.g. Fast Play Mode
-/// without Reload Domain).
-/// </summary>
+
+// Scene-level dispatcher on top of Carter Games' AudioManager.
+// Define named audio "entries" in the Inspector; call Play("key") from any UnityEvent.
+// Each entry keeps its own Started / Looped / Completed UnityEvents so downstream logic can react to a specific sound finishing (same benefit as InspectorAudioClipPlayer).
+
+// If a Manual AudioPlayer is assigned, Play() drives it directly instead of going through
+// Carter's static pool - useful when the pool holds stale references (e.g. Fast Play Mode without Reload Domain).
+
 public class AudioManager_System : MonoBehaviour
 {  
 
@@ -72,9 +70,7 @@ public class AudioManager_System : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Play an entry by key. Wire this to any UnityEvent (String) and type the key in the field.
-    /// </summary>
+    // Play an entry by key. Wire this to any UnityEvent (String) and type the key in the field.
     public void Play(string key)
     {
         if (string.IsNullOrEmpty(key)) return;
@@ -99,12 +95,11 @@ public class AudioManager_System : MonoBehaviour
         }
     }
 
-    // ---------- Manual player path (bypasses Carter's pool) ----------
+    //This is a private method to fix a weird issue where AudioPlayer suddenly is deleted in UnityEditor > Reload Domain only
 
     private void PlayWithManualPlayer(AudioEntry entry)
     {
-        // Carter's Initialize is a one-shot (early-returns if IsInitialized is true), so we reset
-        // it via reflection to let us switch clips on the same scene AudioPlayer between calls.
+        // Carter's Initialize is a one-shot (early-returns if IsInitialized is true), so we reset it via reflection to let us switch clips on the same scene AudioPlayer between calls.
         SetIsInitialized(manualPlayer, false);
 
         var settings = new AudioClipSettings(new IEditModule[]
@@ -116,8 +111,7 @@ public class AudioManager_System : MonoBehaviour
         if (entry.isGroup) manualPlayer.InitializeGroup(entry.request, settings);
         else manualPlayer.Initialize(entry.request, settings);
 
-        // Initialize sets RecycleOnComplete = true. Flip it off so the player won't try to
-        // reparent itself to Carter's DontDestroyOnLoad pool when the clip finishes.
+        // Initialize sets RecycleOnComplete = true. Flip it off so the player won't try to reparent itself to Carter's DontDestroyOnLoad pool when the clip finishes.
         SetRecycleOnComplete(manualPlayer, false);
 
         // The Evts on a reused player accumulate subscribers; clear before re-adding for THIS entry.
@@ -131,7 +125,7 @@ public class AudioManager_System : MonoBehaviour
         manualPlayer.Play();
     }
 
-    // ---------- Pool path (original behavior) ----------
+    //Pool path (original behavior) aka automatic get AudioPlayer
 
     private void PlayWithPool(AudioEntry entry)
     {
@@ -158,14 +152,13 @@ public class AudioManager_System : MonoBehaviour
         player.Completed.Add(() => entry.onCompleted?.Invoke());
     }
 
-    // ---------- Reflection helpers ----------
+    //Reflection helpers
 
     private static void SetIsInitialized(AudioPlayer player, bool value)
     {
         if (isInitializedProp == null)
         {
-            isInitializedProp = typeof(AudioPlayer).GetProperty("IsInitialized",
-                BindingFlags.NonPublic | BindingFlags.Instance);
+            isInitializedProp = typeof(AudioPlayer).GetProperty("IsInitialized", BindingFlags.NonPublic | BindingFlags.Instance);
         }
         isInitializedProp?.SetValue(player, value);
     }
@@ -175,8 +168,7 @@ public class AudioManager_System : MonoBehaviour
         if (recycleOnCompleteProp == null)
         {
             // Property getter is public, setter is private - GetProperty finds it under Public flag.
-            recycleOnCompleteProp = typeof(AudioPlayer).GetProperty("RecycleOnComplete",
-                BindingFlags.Public | BindingFlags.Instance);
+            recycleOnCompleteProp = typeof(AudioPlayer).GetProperty("RecycleOnComplete", BindingFlags.Public | BindingFlags.Instance);
         }
         recycleOnCompleteProp?.SetValue(player, value);
     }

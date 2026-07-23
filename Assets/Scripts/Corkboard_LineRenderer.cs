@@ -3,10 +3,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Corkboard-style pin-and-string system. Click a pin to start drawing a rubber string that
-/// follows the cursor, then click a second pin to lock the connection in place.
-/// </summary>
+
+// Corkboard-style pin-and-string system. Click a pin to start drawing a rubber string that follows the cursor, then click a second pin to lock the connection in place.
+
 public class Corkboard_LineRenderer : MonoBehaviour
 {
     [Header("Pins")]
@@ -43,7 +42,7 @@ public class Corkboard_LineRenderer : MonoBehaviour
     private Vector3 sagPoint;
     private Vector3 sagVelocity;
 
-    // Cached
+    // Cached values
     private Canvas canvas;
     private Camera canvasCam;
 
@@ -51,15 +50,13 @@ public class Corkboard_LineRenderer : MonoBehaviour
     {
         canvas = GetComponentInParent<Canvas>();
 
-        // ScreenPointToWorldPointInRectangle / RectangleContainsScreenPoint want a null camera
-        // for Overlay canvases and the canvas camera otherwise.
+        // ScreenPointToWorldPointInRectangle / RectangleContainsScreenPoint want a null camera for Overlay canvases and the canvas camera otherwise.
         if (canvas != null && canvas.renderMode != RenderMode.ScreenSpaceOverlay)
         {
             canvasCam = canvas.worldCamera;
         }
 
-        // If the assigned linePrefab is a scene object (not a project prefab), hide the template
-        // so only Instantiated clones are visible.
+        // If the assigned linePrefab is a scene object (not a project prefab), hide the template so only Instantiated clones are visible.
         if (linePrefab != null && linePrefab.gameObject.scene.IsValid())
         {
             linePrefab.gameObject.SetActive(false);
@@ -73,20 +70,20 @@ public class Corkboard_LineRenderer : MonoBehaviour
         Vector2 mouseScreen = Mouse.current.position.ReadValue();
         RectTransform hovered = FindPinUnderMouse(mouseScreen);
 
-        // ---- Hover-enter event (only while actively drawing) ----
+        //Hover-enter event (only while actively drawing)
         if (sourcePin != null && hovered != null && hovered != sourcePin && hovered != lastHoveredPin)
         {
             onPinTouched?.Invoke();
         }
         lastHoveredPin = hovered;
 
-        // ---- Click handling ----
+        //Click
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             HandleClick(hovered, mouseScreen);
         }
 
-        // ---- Update the preview line's shape with spring physics each frame ----
+        //Update the preview line's shape with spring physics each frame
         if (sourcePin != null && activeLine != null)
         {
             // If cursor is over another pin, snap the end to that pin for a magnetic feel.
@@ -100,7 +97,7 @@ public class Corkboard_LineRenderer : MonoBehaviour
 
     private void HandleClick(RectTransform hovered, Vector2 mouseScreen)
     {
-        // No active drawing - start one if the click landed on a pin.
+        // No active drawing = start one if the click landed on a pin.
         if (sourcePin == null)
         {
             if (hovered == null) return;

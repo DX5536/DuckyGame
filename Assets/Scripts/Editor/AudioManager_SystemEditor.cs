@@ -6,15 +6,11 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-/// <summary>
-/// Custom inspector for AudioManager_System. Adds the searchable clip / group dropdown
-/// (the same one Carter Games' InspectorAudioClipPlayer uses) to each entry's Request field.
-/// </summary>
+// Custom inspector for AudioManager_System. Adds the searchable clip / group dropdown (the same one Carter Games' InspectorAudioClipPlayer uses) to each entry's Request field.
 [CustomEditor(typeof(AudioManager_System))]
 public sealed class AudioManager_SystemEditor : Editor
 {
-    // The search provider fires a single global callback; we track which SerializedProperty
-    // to write into via these statics.
+    // The search provider fires a single global callback; we track which SerializedProperty to write into via these statics.
     private static SerializedObject targetObjRef;
     private static string targetPropertyPath;
 
@@ -59,8 +55,7 @@ public sealed class AudioManager_SystemEditor : Editor
         EditorGUILayout.Space(10);
         EditorGUILayout.PropertyField(warnProp);
 
-        // Manual AudioPlayer section - these fields exist on the target but the custom editor
-        // must draw them explicitly, otherwise they stay hidden.
+        // Manual AudioPlayer section: These fields exist on the target but the custom editor must draw them explicitly, otherwise they stay hidden.
         EditorGUILayout.Space(10);
         EditorGUILayout.LabelField("Manual AudioPlayer (optional)", EditorStyles.boldLabel);
 
@@ -72,7 +67,7 @@ public sealed class AudioManager_SystemEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 
-    /// <returns>false if this entry was removed and iteration should stop.</returns>
+    // false if this entry was removed and iteration should stop.
     private bool DrawEntry(SerializedProperty entriesProp, int index)
     {
         SerializedProperty entry = entriesProp.GetArrayElementAtIndex(index);
@@ -84,7 +79,7 @@ public sealed class AudioManager_SystemEditor : Editor
 
         EditorGUILayout.BeginVertical("HelpBox");
 
-        // ---- Header: foldout + delete ----
+        //Header: foldout + delete
         EditorGUILayout.BeginHorizontal();
         string title = string.IsNullOrEmpty(keyProp.stringValue) ? $"Entry {index}" : keyProp.stringValue;
         entry.isExpanded = EditorGUILayout.Foldout(entry.isExpanded, title, true, EditorStyles.foldoutHeader);
@@ -115,7 +110,7 @@ public sealed class AudioManager_SystemEditor : Editor
 
         EditorGUILayout.Space(3);
 
-        // ---- Request: Single | Group toolbar + searchable dropdown ----
+        //Request: Single | Group toolbar + searchable dropdown
         EditorGUILayout.LabelField("Request", EditorStyles.miniBoldLabel);
         int newIndex = GUILayout.Toolbar(isGroupProp.boolValue ? 1 : 0, SingleGroupOptions);
         isGroupProp.boolValue = newIndex == 1;

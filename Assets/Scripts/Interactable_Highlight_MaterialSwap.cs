@@ -4,10 +4,8 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-/// Swaps a GameObject's material between DefaultMAT / HighlightMAT / UninteractableMAT
-/// based on the assigned SelectableItem or InteractableNPC scriptable object.
-/// Auto-wires cursor hover (for items) and 2D trigger collisions (for NPCs), but every
-/// method is also public so it can be called from other scripts or Yarn Spinner.
+// Swaps a GameObject's material between DefaultMAT / HighlightMAT / UninteractableMAT based on the assigned SelectableItem or InteractableNPC scriptable object.
+// Auto-wires cursor hover (for items) and 2D trigger collisions (for NPCs), but every method is also public so it can be called from other scripts or Yarn Spinner.
 public class Interactable_Highlight_MaterialSwap : MonoBehaviour,
     IPointerEnterHandler, IPointerExitHandler
 {
@@ -60,7 +58,7 @@ public class Interactable_Highlight_MaterialSwap : MonoBehaviour,
     }
 
     // Applies HighlightMAT if this GameObject is a selectable item AND is interactable.
-    // NPCs are ignored here - use HighlightNPC() for those.
+    // NPCs are ignored here. Use HighlightNPC() for those.
     public void HighlightItem()
     {
         if (IsNPC()) return;
@@ -70,7 +68,7 @@ public class Interactable_Highlight_MaterialSwap : MonoBehaviour,
         StartHighlight(itemData.HighlightMAT);
     }
 
-    /// Applies HighlightMAT if this GameObject is an NPC AND is interactable.
+    // Applies HighlightMAT if this GameObject is an NPC AND is interactable.
     public void HighlightNPC()
     {
         if (!IsNPC()) return;
@@ -130,6 +128,7 @@ public class Interactable_Highlight_MaterialSwap : MonoBehaviour,
     private IEnumerator HighlightRoutine(Material highlightMat)
     {
         // Reset base material first, wait a beat, then apply the highlight.
+        //Basically to avoid a potential weird bug that Unity freak the fuck out and not sure which mat to use :P
         ApplyMaterial(GetBaseMaterial());
         if (highlightDelay > 0f) yield return new WaitForSeconds(highlightDelay);
         else yield return null;

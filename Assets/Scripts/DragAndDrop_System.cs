@@ -60,7 +60,7 @@ public class DragAndDrop_System : MonoBehaviour,
         }
     }
 
-    // ---------- Pointer / Click ----------
+    //Mouse onHover and onClick
 
     public void OnPointerEnter(PointerEventData e)
     {
@@ -71,8 +71,7 @@ public class DragAndDrop_System : MonoBehaviour,
 
     public void OnPointerDown(PointerEventData e)
     {
-        // Fires the instant the button is pressed, before any drag begins. Runs exactly once per
-        // press, regardless of whether the user then holds or drags.
+        // Fires the instant the button is pressed, before any drag begins. Runs exactly once per press, regardless of whether the user then holds or drags.
         if (e.button == PointerEventData.InputButton.Left)
         {
             onLeftClick?.Invoke();
@@ -95,12 +94,12 @@ public class DragAndDrop_System : MonoBehaviour,
         }
     }
 
-    // ---------- Drag ----------
+    //Drag
 
     public void OnBeginDrag(PointerEventData e)
     {
-        canvasGroup.blocksRaycasts = false; // let raycasts hit slots under the item
-        currentSlot = null;                 // pulled out of any current slot
+        canvasGroup.blocksRaycasts = false; // let raycasts hit slots under the item pulled out of any current slot
+        currentSlot = null;
     }
 
     public void OnDrag(PointerEventData e)
@@ -132,7 +131,7 @@ public class DragAndDrop_System : MonoBehaviour,
         });
     }
 
-    // ---------- Snap logic ----------
+    //Items automatically snap to the nearest slot
 
     private RectTransform FindClosestOverlappingSlot()
     {

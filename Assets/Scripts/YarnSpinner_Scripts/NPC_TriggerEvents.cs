@@ -26,8 +26,7 @@ public class NPC_TriggerEvents : MonoBehaviour
 
     private void OnEnable()
     {
-        // Make sure the interact action is live. Not disabled on OnDisable because the same
-        // InputActionReference is likely shared across many NPCs.
+        // Make sure the interact action is live. Not disabled on OnDisable because the same InputActionReference is likely shared across many NPCs.
         keyBindings?.InteractObject?.action?.Enable();
     }
 

@@ -50,9 +50,8 @@ public class Player2DController : MonoBehaviour
 
     private void OnEnable()
     {
-        // Enable the actions we use. We don't Disable on OnDisable because these
-        // InputActionReferences are shared assets - other consumers (e.g. NPC_TriggerEvents)
-        // may need the same actions to stay enabled elsewhere.
+        // Enable the actions we use. We don't Disable on OnDisable because these InputActionReferences are shared assets/other consumers
+        // (e.g. NPC_TriggerEvents) may need the same actions to stay enabled elsewhere.
         if (keyBindings == null) return;
         keyBindings.Move?.action?.Enable();
         keyBindings.Jump?.action?.Enable();
@@ -68,8 +67,7 @@ public class Player2DController : MonoBehaviour
 
     public void CharacterMovement(bool isDialogRunning)
     {
-        // Skip input if a dialog is running, the master IsMoving toggle is off,
-        // or the required references are missing.
+        // Skip input if a dialog is running, the master IsMoving toggle is off or the required references are missing.
         if (isDialogRunning) return;
         if (keyBindings == null) return;
         if (!keyBindings.IsMoving) return;
@@ -80,7 +78,7 @@ public class Player2DController : MonoBehaviour
 
         bool grounded = IsGrounded();
 
-        // ---- Horizontal Movement ----
+        // Horizontal Movement
         // Read as Vector2 so it works with WASD composites, gamepad sticks, and on-screen joysticks.
         float horizontal = moveAction != null ? moveAction.ReadValue<Vector2>().x : 0f;
 
@@ -89,17 +87,17 @@ public class Player2DController : MonoBehaviour
         float newX = grounded ? targetX : Mathf.Lerp(rb.linearVelocity.x, targetX, airControl);
         rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
 
-        // ---- Jump ----
+        // Jump
         if (jumpAction != null && jumpAction.WasPressedThisFrame() && grounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
 
-        // ---- Crouch ----
+        //Crouch
         bool wantsCrouch = crouchAction != null && crouchAction.IsPressed();
         if (wantsCrouch != isCrouching) SetCrouch(wantsCrouch);
 
-        // ---- Animation (only if an Animator is assigned) ----
+        //Animation (only if an Animator is assigned)
         if (animator != null)
         {
             animator.SetFloat("Speed", Mathf.Abs(horizontal));

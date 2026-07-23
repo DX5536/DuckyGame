@@ -15,9 +15,7 @@ public class YarnSpinner_TriggerSpecificNode : MonoBehaviour
     [YarnNode(nameof(yarnProject))]
     [SerializeField] private string nodeName;
 
-    /// <summary>
-    /// Wire this up to any UnityEvent (e.g. NPC_TriggerEvents.OnCollide) to play the selected Yarn node.
-    /// </summary>
+    // Wire this up to any UnityEvent (e.g. NPC_TriggerEvents.OnCollide) to play the selected Yarn node.
     public void TriggerNode()
     {
         if (dialogueRunner == null)
