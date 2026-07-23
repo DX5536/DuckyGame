@@ -24,4 +24,4 @@ MonoBehaviour:
   npcIdleAnim: {fileID: 0}
   npcWalkAnim: {fileID: 0}
   resetAffection_DEBUG: 1
-  affectionValue: 14
+  affectionValue: 4
