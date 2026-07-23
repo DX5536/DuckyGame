@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mechanic_2DCharacterMovement_DialogSystem_Highlight.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Mechanic_CentralHub_SceneSwitcher.unity
+    guid: e999579c6b7095e4cae49b40b9a0429a
+  - enabled: 1
+    path: Assets/Scenes/Mechanic_CorkboardDragNDrop.unity
+    guid: 52dcb468a26480d49810601a19bab653
+  - enabled: 1
+    path: Assets/Scenes/Mechanic_Mechanic_Newspaper.unity
+    guid: d658cfa55ceb55e4e951a4a124066411
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -1,14 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-/// <summary>
 /// Swaps a GameObject's material between DefaultMAT / HighlightMAT / UninteractableMAT
 /// based on the assigned SelectableItem or InteractableNPC scriptable object.
 /// Auto-wires cursor hover (for items) and 2D trigger collisions (for NPCs), but every
 /// method is also public so it can be called from other scripts or Yarn Spinner.
-/// </summary>
 public class Interactable_Highlight_MaterialSwap : MonoBehaviour,
     IPointerEnterHandler, IPointerExitHandler
 {
@@ -30,6 +29,10 @@ public class Interactable_Highlight_MaterialSwap : MonoBehaviour,
     [Tooltip("If true, this script reacts to IPointerEnter/Exit (items) and OnTriggerEnter2D/Exit2D with a Player tag (NPCs) on its own. Turn off if you're wiring everything manually through UnityEvents.")]
     [SerializeField] private bool autoWireEvents = true;
 
+    [Header("Events")]
+    [SerializeField] private UnityEvent onHover;
+    [SerializeField] private UnityEvent onHoverExit;
+
     private SpriteRenderer spriteRenderer;
     private Image uiImage;
     private Coroutine highlightRoutine;
@@ -46,12 +49,9 @@ public class Interactable_Highlight_MaterialSwap : MonoBehaviour,
         UpdateGameObjectMaterial();
     }
 
-    // ---------- Public API ----------
 
-    /// <summary>
-    /// Sets the base material - UninteractableMAT when isInteractable is false, else DefaultMAT.
-    /// Also cancels any in-flight highlight delay. Safe to call from anywhere.
-    /// </summary>
+    // Sets the base material - UninteractableMAT when isInteractable is false, else DefaultMAT.
+    // Also cancels any in-flight highlight delay. Safe to call from anywhere.
     public void UpdateGameObjectMaterial()
     {
         StopHighlightRoutine();
@@ -59,10 +59,8 @@ public class Interactable_Highlight_MaterialSwap : MonoBehaviour,
         ApplyMaterial(baseMat);
     }
 
-    /// <summary>
-    /// Applies HighlightMAT if this GameObject is a selectable item AND is interactable.
-    /// NPCs are ignored here - use HighlightNPC() for those.
-    /// </summary>
+    // Applies HighlightMAT if this GameObject is a selectable item AND is interactable.
+    // NPCs are ignored here - use HighlightNPC() for those.
     public void HighlightItem()
     {
         if (IsNPC()) return;
@@ -72,9 +70,7 @@ public class Interactable_Highlight_MaterialSwap : MonoBehaviour,
         StartHighlight(itemData.HighlightMAT);
     }
 
-    /// <summary>
     /// Applies HighlightMAT if this GameObject is an NPC AND is interactable.
-    /// </summary>
     public void HighlightNPC()
     {
         if (!IsNPC()) return;
@@ -84,17 +80,21 @@ public class Interactable_Highlight_MaterialSwap : MonoBehaviour,
         StartHighlight(npcData.HighlightMAT);
     }
 
-    // ---------- Auto-wired events ----------
+    //Auto-wired events
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (!autoWireEvents) return;
+
         HighlightItem();
+        onHover?.Invoke();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if (!autoWireEvents) return;
+
+        onHoverExit?.Invoke();
         UpdateGameObjectMaterial();
     }
 
@@ -110,7 +110,7 @@ public class Interactable_Highlight_MaterialSwap : MonoBehaviour,
         if (other.CompareTag(playerTag)) UpdateGameObjectMaterial();
     }
 
-    // ---------- Internals ----------
+    //Internals methods
 
     private void StartHighlight(Material highlightMat)
     {

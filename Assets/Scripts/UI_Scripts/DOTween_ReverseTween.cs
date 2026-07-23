@@ -50,10 +50,8 @@ public class DOTween_ReverseTween : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Plays the tween forward. WIRE YOUR OnCollide UnityEvent TO THIS instead of DOTweenTimeline.DOPlay(),
-    /// otherwise the direction stays "backward" after a reverse and the cycle breaks.
-    /// </summary>
+    // Plays the tween forward. WIRE YOUR OnCollide UnityEvent TO THIS instead of DOTweenTimeline.DOPlay(),
+    // otherwise the direction stays "backward" after a reverse and the cycle breaks.
     public void PlayForward()
     {
         if (verboseLogging) Debug.Log($"[{name}] PlayForward()", this);
@@ -68,9 +66,7 @@ public class DOTween_ReverseTween : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Plays the tween in reverse. Wire this to your OnExit UnityEvent.
-    /// </summary>
+    // Plays the tween in reverse. Wire this to your OnExit UnityEvent.
     public void PlayReverse()
     {
         if (verboseLogging) Debug.Log($"[{name}] PlayReverse()", this);
