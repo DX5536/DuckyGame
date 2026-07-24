@@ -37,6 +37,14 @@ public class SelectableItem_ScriptableObject : ScriptableObject
         set { isInteractable = value; }
     }
 
+    [Header("Is this item a sticker (can be peeled off by StickerPeelManager)")]
+    [SerializeField] private bool isSticker;
+    public bool IsSticker
+    {
+        get { return isSticker; }
+        set { isSticker = value; }
+    }
+
     [Header("Materials (get only)")]
     [SerializeField] private Material defaultMAT;
     public Material DefaultMAT
