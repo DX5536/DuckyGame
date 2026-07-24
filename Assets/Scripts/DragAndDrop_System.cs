@@ -96,14 +96,23 @@ public class DragAndDrop_System : MonoBehaviour,
 
     //Drag
 
+    // Stickers are peeled off (StickerPeelManager), not dragged - block drag entirely for them.
+    private bool CanDrag()
+    {
+        return itemData == null || !itemData.IsSticker;
+    }
+
     public void OnBeginDrag(PointerEventData e)
     {
+        if (!CanDrag()) return;
+
         canvasGroup.blocksRaycasts = false; // let raycasts hit slots under the item pulled out of any current slot
         currentSlot = null;
     }
 
     public void OnDrag(PointerEventData e)
     {
+        if (!CanDrag()) return;
         if (canvas == null) return;
 
         // Works for all Canvas render modes (Overlay / Camera / World).
@@ -116,6 +125,8 @@ public class DragAndDrop_System : MonoBehaviour,
 
     public void OnEndDrag(PointerEventData e)
     {
+        if (!CanDrag()) return;
+
         canvasGroup.blocksRaycasts = true;
 
         RectTransform snapTarget = FindClosestOverlappingSlot();
