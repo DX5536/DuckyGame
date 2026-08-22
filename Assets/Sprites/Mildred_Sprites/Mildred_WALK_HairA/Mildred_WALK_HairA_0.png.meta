@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 36a1179b85de3f146955c77e833b1cb7
+guid: 0477739c2b413a143b0ee2cdddceb41c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2411320267249955439
-    second: Idle_Mildred - 5_0
+      213: -3848682121849241172
+    second: FOR EXPORT_Walk - 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_Mildred - 5_0
+      name: FOR EXPORT_Walk - 1_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 19
-        width: 262
-        height: 507
+        x: 249
+        y: 729
+        width: 362
+        height: 422
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 19dcdde1ef4498ed0800000000000000
-      internalID: -2411320267249955439
+      spriteID: ca187c9500cb69ac0800000000000000
+      internalID: -3848682121849241172
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Idle_Mildred - 5_0: -2411320267249955439
+      FOR EXPORT_Walk - 1_0: -3848682121849241172
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
