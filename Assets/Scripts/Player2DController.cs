@@ -1,6 +1,8 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 using Yarn.Unity;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -83,6 +85,20 @@ public class Player2DController : MonoBehaviour
         float horizontal = moveAction != null ? moveAction.ReadValue<Vector2>().x : 0f;
 
         float targetX = horizontal * moveSpeed;
+
+        //Flip the sprite based on movement direction (only if an Animator is assigned)
+        if (targetX < 0f)
+        {
+            //If Player goes  left, flip the sprite to face left
+            this.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+
+        else if (targetX > 0f)
+        {
+            //If Player goes right, flip the sprite to face right
+            this.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+
         // Full control on the ground; blended control in the air so momentum carries the player forward.
         float newX = grounded ? targetX : Mathf.Lerp(rb.linearVelocity.x, targetX, airControl);
         rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
@@ -104,6 +120,12 @@ public class Player2DController : MonoBehaviour
             animator.SetBool("IsCrouching", isCrouching);
             animator.SetBool("IsGrounded", grounded);
         }
+    }
+
+    
+    private void FlipSprite()
+    {
+
     }
 
     private void SetCrouch(bool crouching)
