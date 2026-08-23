@@ -1050,7 +1050,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.95, y: 6.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1884,15 +1884,15 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: d9391bd8bbc1f4c4486bb0768cef05a7, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.95, y: 6.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &936751935 stripped
 GameObject:
@@ -2180,7 +2180,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.95, y: 6.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3362,7 +3362,6 @@ GameObject:
   - component: {fileID: 1813258260}
   - component: {fileID: 1813258259}
   - component: {fileID: 1813258265}
-  - component: {fileID: 1813258266}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3394,36 +3393,14 @@ MonoBehaviour:
   animator: {fileID: 1813258265}
   walkingEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1914754878}
-        m_TargetAssemblyTypeName: ResetPlayerClothes, Assembly-CSharp
-        m_MethodName: EnableClothes
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   standingEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1914754878}
-        m_TargetAssemblyTypeName: ResetPlayerClothes, Assembly-CSharp
-        m_MethodName: DisableClothes
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   dialogueRunner: {fileID: 158289914}
   horizontalInputValue: 0
+  wasWalking: 0
+  hasWalkingState: 0
 --- !u!61 &1813258260
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3600,25 +3577,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1813258266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1813258258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 163e1c0013bddb0499589642d805d28b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ResetPlayerClothes
-  playerItems:
-  - {fileID: 1130445755}
-  - {fileID: 914463005}
-  - {fileID: 1625210564}
-  - {fileID: 656744526}
-  - {fileID: 157260119}
-  - {fileID: 850686015}
 --- !u!1 &1872862492
 GameObject:
   m_ObjectHideFlags: 0
