@@ -16,8 +16,6 @@ public class Player2DController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 8f;
-    [SerializeField] private float gravityExtraScale = 500f;
-    [SerializeField] private float gravityOGScale = 1.3f;
 
     [Header("Air Control")]
     [Tooltip("0 = keep all momentum in air (long drift). 1 = instant stop like on the ground (no drift).")]
@@ -32,8 +30,9 @@ public class Player2DController : MonoBehaviour
     [Header("Animation (optional)")]
     [SerializeField] private Animator animator;
 
-    [Header("Trigger Event")]
-    [SerializeField] private UnityEvent onTriggerEntered;
+    [Header("Trigger Event_DEBUG")]
+    [SerializeField] private UnityEvent walkingEvent;
+    [SerializeField] private UnityEvent standingEvent;
 
     [Header("Yarn Spinner (optional)")]
     [Tooltip("Drag the scene's DialogueRunner here so the player auto-stops while dialogue is running.")]
@@ -47,6 +46,7 @@ public class Player2DController : MonoBehaviour
     private Vector2 defaultColliderSize;
     private Vector2 defaultColliderOffset;
     private bool isCrouching;
+    [SerializeField] private bool wasWalking, hasWalkingState;
 
     private void Awake()
     {
@@ -82,7 +82,7 @@ public class Player2DController : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
 
             horizontalInputValue = 0;
-            ChangeAnimation_WALKING(false);
+            SetWalkingState(false);
 
             return;
         }
@@ -114,8 +114,7 @@ public class Player2DController : MonoBehaviour
 
         //-1=left, 0=idle, 1=right
 
-        if (horizontalInputValue == 0f) //BACKUP: THIS WORK
-        //if (keyBindings.CanMove == false)
+        /*if (horizontalInputValue == 0f)
         {
             ChangeAnimation_WALKING(false);
         }
@@ -123,8 +122,14 @@ public class Player2DController : MonoBehaviour
         else
         {
             ChangeAnimation_WALKING(true);
-        }
+        }*/
 
+        //----------------------
+        //More polished version of animation switch
+        bool isWalking = Mathf.Abs(horizontalInputValue) > 0.01f;
+        SetWalkingState(isWalking);
+
+        //----------------------
         //Flip the sprite based on movement direction (only if an Animator is assigned)
         if (targetX < 0f)
         {
@@ -162,31 +167,33 @@ public class Player2DController : MonoBehaviour
         }
     }
 
-    //Public method to access in other NPC/Item story collider)
-    //When Dialog is running, to avoid slide, I will increase gravity
-
-    //---OLD: Better to use rb.linearVelocity---
-    /*public void StopPlayerSlidingViaGravity(string slidingBehaviour)
+    private void SetWalkingState(bool isWalking)
     {
-        switch (slidingBehaviour)
+        // Setting the anim bool every frame is fine (Animator ignores redundant sets).
+        ChangeAnimation_WALKING(isWalking);
+
+        if (hasWalkingState && isWalking == wasWalking) return;
+
+        hasWalkingState = true;
+        wasWalking = isWalking;
+
+        if (isWalking)
         {
-            case "STOP":
-                rb.gravityScale = gravityExtraScale;
-                break;
-
-            case "GO":
-                rb.gravityScale = gravityOGScale;
-                break;
-
-            case "STOP_AND_GO":
-                StartCoroutine(DelayUnStopSliding(1f));
-                break;
+            walkingEvent?.Invoke();
         }
-    }*/
+        else
+        {
+            standingEvent?.Invoke();
+        }
+    }
 
     private void ChangeAnimation_WALKING(bool isWalking)
     {
-        animator.SetBool("isWalking", isWalking);
+        if (animator != null)
+        {
+            animator.SetBool("isWalking", isWalking);
+        }
+        
     }
 
     private void SetCrouch(bool crouching)
@@ -212,18 +219,4 @@ public class Player2DController : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer) != null;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        onTriggerEntered?.Invoke();
-    }
-
-    /*IEnumerator DelayUnStopSliding(float delayTime)
-    {
-        rb.bodyType = RigidbodyType2D.Static;
-
-        //Wait for the specified delay time before continuing.
-        yield return new WaitForSeconds(delayTime);
-
-        rb.bodyType = RigidbodyType2D.Dynamic;
-    }*/
 }
