@@ -5,11 +5,11 @@ using UnityEngine.InputSystem;
 public class KeyBinding_ScriptableObject : ScriptableObject
 {
     [Header("Is Moving (master toggle - if false, input is ignored)")]
-    [SerializeField] private bool isMoving = true;
-    public bool IsMoving
+    [SerializeField] private bool canMove = true;
+    public bool CanMove
     {
-        get { return isMoving; }
-        set { isMoving = value; }
+        get { return canMove; }
+        set { canMove = value; }
     }
 
     [Header("Move (Value / Vector2)")]

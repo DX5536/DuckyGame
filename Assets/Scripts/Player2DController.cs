@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,6 +16,8 @@ public class Player2DController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 8f;
+    [SerializeField] private float gravityExtraScale = 500f;
+    [SerializeField] private float gravityOGScale = 1.3f;
 
     [Header("Air Control")]
     [Tooltip("0 = keep all momentum in air (long drift). 1 = instant stop like on the ground (no drift).")]
@@ -35,6 +38,9 @@ public class Player2DController : MonoBehaviour
     [Header("Yarn Spinner (optional)")]
     [Tooltip("Drag the scene's DialogueRunner here so the player auto-stops while dialogue is running.")]
     [SerializeField] private DialogueRunner dialogueRunner;
+
+    [Header("-1=left, 0=idle, 1=right")]
+    [SerializeField] private float horizontalInputValue; // For debugging in the Inspector
 
     private Rigidbody2D rb;
     private BoxCollider2D box;
@@ -70,9 +76,23 @@ public class Player2DController : MonoBehaviour
     public void CharacterMovement(bool isDialogRunning)
     {
         // Skip input if a dialog is running, the master IsMoving toggle is off or the required references are missing.
-        if (isDialogRunning) return;
+        if (isDialogRunning)
+        { 
+            keyBindings.CanMove = false;
+            horizontalInputValue = 0;
+            ChangeAnimation_WALKING(false);
+
+            return;
+        }
+        else
+        {
+            keyBindings.CanMove = true;
+        }
+
+
+
         if (keyBindings == null) return;
-        if (!keyBindings.IsMoving) return;
+        
 
         InputAction moveAction = keyBindings.Move != null ? keyBindings.Move.action : null;
         InputAction jumpAction = keyBindings.Jump != null ? keyBindings.Jump.action : null;
@@ -83,8 +103,25 @@ public class Player2DController : MonoBehaviour
         // Horizontal Movement
         // Read as Vector2 so it works with WASD composites, gamepad sticks, and on-screen joysticks.
         float horizontal = moveAction != null ? moveAction.ReadValue<Vector2>().x : 0f;
-
         float targetX = horizontal * moveSpeed;
+
+        horizontalInputValue = horizontal; // For debugging in the Inspector
+
+
+        //-------Animation/Sprite---------
+
+        //-1=left, 0=idle, 1=right
+
+        if (horizontalInputValue == 0f) //BACKUP: THIS WORK
+        //if (keyBindings.CanMove == false)
+        {
+            ChangeAnimation_WALKING(false);
+        }
+
+        else
+        {
+            ChangeAnimation_WALKING(true);
+        }
 
         //Flip the sprite based on movement direction (only if an Animator is assigned)
         if (targetX < 0f)
@@ -109,7 +146,8 @@ public class Player2DController : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
 
-        //Crouch
+        //-------Crouch---------
+        //
         bool wantsCrouch = crouchAction != null && crouchAction.IsPressed();
         if (wantsCrouch != isCrouching) SetCrouch(wantsCrouch);
 
@@ -122,10 +160,29 @@ public class Player2DController : MonoBehaviour
         }
     }
 
-    
-    private void FlipSprite()
+    //Public method to access in other NPC/Item story collider)
+    //When Dialog is running, to avoid slide, I will increase gravity
+    public void StopPlayerSlidingViaGravity(string slidingBehaviour)
     {
+        switch (slidingBehaviour)
+        {
+            case "STOP":
+                rb.gravityScale = gravityExtraScale;
+                break;
 
+            case "GO":
+                rb.gravityScale = gravityOGScale;
+                break;
+
+            case "STOP_AND_GO":
+                StartCoroutine(DelayUnStopSliding(1f));
+                break;
+        }
+    }
+
+    private void ChangeAnimation_WALKING(bool isWalking)
+    {
+        animator.SetBool("isWalking", isWalking);
     }
 
     private void SetCrouch(bool crouching)
@@ -154,5 +211,15 @@ public class Player2DController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         onTriggerEntered?.Invoke();
+    }
+
+    IEnumerator DelayUnStopSliding(float delayTime)
+    {
+        rb.bodyType = RigidbodyType2D.Static;
+
+        //Wait for the specified delay time before continuing.
+        yield return new WaitForSeconds(delayTime);
+
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
 }
