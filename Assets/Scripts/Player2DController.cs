@@ -79,6 +79,8 @@ public class Player2DController : MonoBehaviour
         if (isDialogRunning)
         { 
             keyBindings.CanMove = false;
+            rb.linearVelocity = Vector2.zero;
+
             horizontalInputValue = 0;
             ChangeAnimation_WALKING(false);
 
@@ -162,7 +164,9 @@ public class Player2DController : MonoBehaviour
 
     //Public method to access in other NPC/Item story collider)
     //When Dialog is running, to avoid slide, I will increase gravity
-    public void StopPlayerSlidingViaGravity(string slidingBehaviour)
+
+    //---OLD: Better to use rb.linearVelocity---
+    /*public void StopPlayerSlidingViaGravity(string slidingBehaviour)
     {
         switch (slidingBehaviour)
         {
@@ -178,7 +182,7 @@ public class Player2DController : MonoBehaviour
                 StartCoroutine(DelayUnStopSliding(1f));
                 break;
         }
-    }
+    }*/
 
     private void ChangeAnimation_WALKING(bool isWalking)
     {
@@ -213,7 +217,7 @@ public class Player2DController : MonoBehaviour
         onTriggerEntered?.Invoke();
     }
 
-    IEnumerator DelayUnStopSliding(float delayTime)
+    /*IEnumerator DelayUnStopSliding(float delayTime)
     {
         rb.bodyType = RigidbodyType2D.Static;
 
@@ -221,5 +225,5 @@ public class Player2DController : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
 
         rb.bodyType = RigidbodyType2D.Dynamic;
-    }
+    }*/
 }
