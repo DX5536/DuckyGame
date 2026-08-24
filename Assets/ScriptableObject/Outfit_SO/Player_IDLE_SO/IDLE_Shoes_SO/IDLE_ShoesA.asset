@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c7600cc0cb545648946242fe3805272, type: 3}
-  m_Name: IDLE_BagA
+  m_Name: IDLE_ShoesA
   m_EditorClassIdentifier: Assembly-CSharp::PlayerOutfit_ScriptableObject
-  playerOutfitName: Default bag
-  playerOutfitDescription: Mildred's default bag
-  playerOutfitID: BagA
+  playerOutfitName: Default camera
+  playerOutfitDescription: Mildred's default Camera
+  playerOutfitID: ShoesA
   playerAnimationStatusName: IDLE
   playerOutfitSprite:
-  - {fileID: 21300000, guid: d25c87176e0f4824e84be4158505139a, type: 3}
-  - {fileID: 21300000, guid: 2c21a2415359aa447884c1d69c8e1daa, type: 3}
-  - {fileID: 21300000, guid: 176684f248281c647b30ec7a50bed7eb, type: 3}
-  - {fileID: 21300000, guid: 6015326e385d65a43bbb7f91d479e5af, type: 3}
+  - {fileID: 21300000, guid: 81f2a392c8a570b43b870b33cf688845, type: 3}
+  - {fileID: 21300000, guid: 6c3de111c279dea4da63fa405458b1d4, type: 3}
+  - {fileID: 21300000, guid: 9b8d35843c5727247a63e8fd6fd0a2f7, type: 3}
+  - {fileID: 21300000, guid: d9ad1245f898d814db27f2401317cf37, type: 3}

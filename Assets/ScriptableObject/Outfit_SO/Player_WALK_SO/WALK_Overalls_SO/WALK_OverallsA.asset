@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c7600cc0cb545648946242fe3805272, type: 3}
-  m_Name: IDLE_HairA
+  m_Name: WALK_OverallsA
   m_EditorClassIdentifier: Assembly-CSharp::PlayerOutfit_ScriptableObject
   playerOutfitName: Default camera
   playerOutfitDescription: Mildred's default Camera
-  playerOutfitID: cameraA
-  playerAnimationStatusName: IDLE
+  playerOutfitID: OverallsA
+  playerAnimationStatusName: WALK
   playerOutfitSprite:
-  - {fileID: 21300000, guid: 4ed9b8ad0a88d4c43b2eb6009254b84c, type: 3}
-  - {fileID: 21300000, guid: 71a76248deff6fd4496ff616befb5f9f, type: 3}
-  - {fileID: 21300000, guid: 63b801c5a68f49942af740139601c9df, type: 3}
-  - {fileID: 21300000, guid: c26e6d49393713144a26ea939f1b6f0d, type: 3}
+  - {fileID: 21300000, guid: 6a67c6cd10c830c468e862583489ea62, type: 3}
+  - {fileID: 21300000, guid: 5fb5290e3e8c2f447a9055ec18cd37e2, type: 3}
+  - {fileID: 21300000, guid: c0eb23e9dd3fc1c469abd014db024cfe, type: 3}
+  - {fileID: 21300000, guid: 1340d184dfc247548bfb804cdd45b7bf, type: 3}

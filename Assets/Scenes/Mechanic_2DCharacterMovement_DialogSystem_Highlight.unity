@@ -3900,7 +3900,31 @@ MonoBehaviour:
   fallbackStatus: IDLE
   slots:
   - part: 0
-    renderer: {fileID: 0}
+    renderer: {fileID: 1130445757}
+    variants: []
+    equippedID: 
+  - part: 1
+    renderer: {fileID: 914463007}
+    variants: []
+    equippedID: 
+  - part: 3
+    renderer: {fileID: 1625210566}
+    variants: []
+    equippedID: 
+  - part: 4
+    renderer: {fileID: 157260121}
+    variants: []
+    equippedID: 
+  - part: 5
+    renderer: {fileID: 874582774}
+    variants: []
+    equippedID: 
+  - part: 6
+    renderer: {fileID: 53426460}
+    variants: []
+    equippedID: 
+  - part: 7
+    renderer: {fileID: 850686017}
     variants: []
     equippedID: 
 --- !u!1660057539 &9223372036854775807
