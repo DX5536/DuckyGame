@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7600cc0cb545648946242fe3805272, type: 3}
+  m_Name: IDLE_BagA
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerOutfit_ScriptableObject
+  playerOutfitName: Default bag
+  playerOutfitDescription: Mildred's default bag
+  playerOutfitID: bagA
+  playerAnimationStatusName: IDLE
+  playerOutfitSprite:
+  - {fileID: 21300000, guid: d25c87176e0f4824e84be4158505139a, type: 3}
+  - {fileID: 21300000, guid: 2c21a2415359aa447884c1d69c8e1daa, type: 3}
+  - {fileID: 21300000, guid: 176684f248281c647b30ec7a50bed7eb, type: 3}
+  - {fileID: 21300000, guid: 6015326e385d65a43bbb7f91d479e5af, type: 3}

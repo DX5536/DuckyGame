@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c7600cc0cb545648946242fe3805272, type: 3}
+  m_Name: IDLE_HairA
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerOutfit_ScriptableObject
+  playerOutfitName: Default camera
+  playerOutfitDescription: Mildred's default Camera
+  playerOutfitID: cameraA
+  playerAnimationStatusName: IDLE
+  playerOutfitSprite:
+  - {fileID: 21300000, guid: 4ed9b8ad0a88d4c43b2eb6009254b84c, type: 3}
+  - {fileID: 21300000, guid: 71a76248deff6fd4496ff616befb5f9f, type: 3}
+  - {fileID: 21300000, guid: 63b801c5a68f49942af740139601c9df, type: 3}
+  - {fileID: 21300000, guid: c26e6d49393713144a26ea939f1b6f0d, type: 3}
