@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c7600cc0cb545648946242fe3805272, type: 3}
-  m_Name: IDLE_HairA
+  m_Name: IDLE_OverallAA
   m_EditorClassIdentifier: Assembly-CSharp::PlayerOutfit_ScriptableObject
-  playerOutfitName: Default Hair
-  playerOutfitDescription: Mildred's default hair
-  playerOutfitID: HairA
+  playerOutfitName: Default overalls
+  playerOutfitDescription: Mildred's default outfit
+  playerOutfitID: OverallAA
   playerAnimationStatusName: IDLE
   playerOutfitSprite:
-  - {fileID: 21300000, guid: becbe3e7f7d3d4f438529ebea9ed1013, type: 3}
-  - {fileID: 21300000, guid: bf9b3abe1a63be44ba612aefa7617922, type: 3}
-  - {fileID: 21300000, guid: e3ad00d00484194428769b20d256dab8, type: 3}
-  - {fileID: 21300000, guid: 0da5e7db371997e4db4c43350397dcf4, type: 3}
+  - {fileID: 21300000, guid: be177efed54bdd442b3318a8144cabf0, type: 3}
+  - {fileID: 21300000, guid: 23d9a7940f92601479e559c5970ecb96, type: 3}
+  - {fileID: 21300000, guid: 9aafb314a763a834bbb4ca8c17e76fdb, type: 3}
+  - {fileID: 21300000, guid: 1100ba9ed4def2440a4c790d55c6c777, type: 3}
