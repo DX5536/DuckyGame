@@ -5,7 +5,7 @@
 // - WEBSITE: https://www.textanimatorforgames.com/
 // =======================================================
 
-/*
+﻿/*
 #if !UNITY_6000_3_OR_NEWER
 
 #if UNITY_2023_2_OR_NEWER

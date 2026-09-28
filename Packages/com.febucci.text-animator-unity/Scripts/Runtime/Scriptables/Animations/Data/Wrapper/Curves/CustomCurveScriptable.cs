@@ -5,7 +5,7 @@
 // - WEBSITE: https://www.textanimatorforgames.com/
 // =======================================================
 
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Febucci.TextAnimatorForUnity.Effects

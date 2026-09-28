@@ -5,7 +5,7 @@
 // - WEBSITE: https://www.textanimatorforgames.com/
 // =======================================================
 
-using Febucci.Parsing.Regions;
+﻿using Febucci.Parsing.Regions;
 using Febucci.TextAnimatorCore;
 using Febucci.TextAnimatorCore.Text;
 namespace Febucci.TextAnimatorForUnity

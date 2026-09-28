@@ -5,7 +5,7 @@
 // - WEBSITE: https://www.textanimatorforgames.com/
 // =======================================================
 
-#if UNITY_6000_3_OR_NEWER
+﻿#if UNITY_6000_3_OR_NEWER
 
 using System;
 using System.Collections.Generic;
@@ -401,11 +401,9 @@ namespace Febucci.TextAnimatorForUnity // direct namespace for the UITK builder
             onSyncedContext = true;
 
             bool hasAdvancedTextGeneration = resolvedStyle.unityTextGenerator == TextGeneratorType.Advanced;
-            if (shouldBeCopied)
-            {
-                CopyGlyphs(glyphs, hasAdvancedTextGeneration);
-                shouldBeCopied = false;
-            }
+            CopyGlyphs(glyphs, hasAdvancedTextGeneration);
+            shouldBeCopied = false;
+            animator.NotifySourceMeshUpdated();
 
             // This animate call repopulates hiddend character before start animating. This prevents 
             // having 1 frame showing all the text. This brings back fix from 869bydzw2 without breaking
@@ -422,7 +420,7 @@ namespace Febucci.TextAnimatorForUnity // direct namespace for the UITK builder
             shouldBeCopied = true;
         }
 
-        public override bool HasChangedMeshRenderingSettings() => true;
+        public override bool HasChangedMeshRenderingSettings() => false;
 
         public void SetEffectsDatabase(IDatabaseProvider<IEffect> database)
         {

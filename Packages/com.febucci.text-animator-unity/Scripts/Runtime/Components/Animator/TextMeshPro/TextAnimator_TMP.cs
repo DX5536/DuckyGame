@@ -5,7 +5,7 @@
 // - WEBSITE: https://www.textanimatorforgames.com/
 // =======================================================
 
-using Febucci.TextAnimatorCore.Text;
+﻿using Febucci.TextAnimatorCore.Text;
 using TMPro;
 using UnityEngine;
 using Febucci.Parsing.Core;

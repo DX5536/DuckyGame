@@ -5,7 +5,7 @@
 // - WEBSITE: https://www.textanimatorforgames.com/
 // =======================================================
 
-using Febucci.TextAnimatorForUnity;
+﻿using Febucci.TextAnimatorForUnity;
 using UnityEngine;
 
 namespace Febucci.UI.Examples

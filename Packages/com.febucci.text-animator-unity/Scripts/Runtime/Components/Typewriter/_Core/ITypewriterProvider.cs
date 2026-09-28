@@ -5,7 +5,7 @@
 // - WEBSITE: https://www.textanimatorforgames.com/
 // =======================================================
 
-namespace Febucci.TextAnimatorForUnity
+﻿namespace Febucci.TextAnimatorForUnity
 {
     interface ITypewriterProvider
     {
@@ -30,11 +30,22 @@ namespace Febucci.TextAnimatorForUnity
         /// </remarks>
         public void SkipTypewriter();
 
+        /// <summary>
+        /// skips the current blocking action and resumes showing text
+        /// </summary>
+        /// <returns>true if an action was skipped</returns>
+        public bool SkipCurrentAction();
+
 
         /// <summary>
         /// True if the typewriter is currently showing letters
         /// </summary>
         public bool IsShowingText { get; }
+
+        /// <summary>
+        /// true if the typewriter is waiting for the current action to finish
+        /// </summary>
+        public bool IsWaitingForAction { get; }
 
         /// <summary>
         /// Starts showing letters dynamically

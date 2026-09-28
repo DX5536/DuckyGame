@@ -74,6 +74,21 @@
             Animates with the provided <see cref="T:Febucci.TextAnimatorCore.Time.TimeScale" /> time.
             </summary>
         </member>
+        <member name="M:Febucci.TextAnimatorCore.TextAnimator.PauseAnimation">
+            <summary>
+            Pauses animation, this do not reset character data, so if a char is displaced, scaled, etc... it freezes in that state.
+            </summary>
+        </member>
+        <member name="M:Febucci.TextAnimatorCore.TextAnimator.ResumeAnimation">
+            <summary>
+            Resume animation from pause point.
+            </summary>
+        </member>
+        <member name="M:Febucci.TextAnimatorCore.TextAnimator.NotifySourceMeshUpdated">
+            <summary>
+            notifies the animator that an asynchronous text generator has already copied updated source mesh data
+            </summary>
+        </member>
         <member name="M:Febucci.TextAnimatorCore.TextAnimator.SetVisibilityChar(System.Int32,System.Boolean,System.Boolean)">
             <summary>
             Sets a character visibility.
@@ -119,6 +134,14 @@
             <param name="character" />
             <returns />
             <remarks>See: <seealso cref="!:CharacterData.scaleDir" /></remarks>
+        </member>
+        <member name="M:Febucci.TextAnimatorCore.Text.ITextGenerator.HasChangedMeshRenderingSettings">
+            <summary>
+            reports whether the animator must request and copy a regenerated source mesh
+            </summary>
+            <remarks>
+            asynchronous providers that already copied new source data should notify the animator directly instead
+            </remarks>
         </member>
         <member name="M:Febucci.TextAnimatorCore.Text.ITextGenerator.GetFirstCharacterIndexInsidePage">
             <summary>
@@ -247,6 +270,11 @@
             </summary>
             <param name="character">Character with source and current mesh data</param>
             <param name="context">Animation context</param>
+        </member>
+        <member name="M:Febucci.TextAnimatorCore.IEffectPlayer.PrepareFrame(Febucci.TextAnimatorCore.AnimationContext@)">
+            <summary>
+            prepares frame-level state and reports whether the effect requires continuous mesh updates
+            </summary>
         </member>
         <member name="T:Febucci.TextAnimatorCore.AnimUtils">
             <summary>
@@ -450,6 +478,11 @@
             True if the typewriter is currently showing letters
             </summary>
         </member>
+        <member name="P:Febucci.TextAnimatorCore.Typing.TypewriterCore.IsWaitingForAction">
+            <summary>
+            true if the typewriter is waiting for the current action to finish
+            </summary>
+        </member>
         <member name="P:Febucci.TextAnimatorCore.Typing.TypewriterCore.IsHidingText">
             <summary>
             True if the typewriter is currently disappearing the text
@@ -500,6 +533,12 @@
             <summary>
             Skips the typewriter animation (if it's currently showing or hiding)
             </summary>
+        </member>
+        <member name="M:Febucci.TextAnimatorCore.Typing.TypewriterCore.SkipCurrentAction">
+            <summary>
+            skips the current blocking action and resumes showing text
+            </summary>
+            <returns>true if an action was skipped</returns>
         </member>
         <member name="M:Febucci.TextAnimatorCore.Typing.TypewriterCore.StartShowingText(System.Boolean)">
             <summary>

@@ -5,7 +5,7 @@
 // - WEBSITE: https://www.textanimatorforgames.com/
 // =======================================================
 
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Febucci.TextAnimatorForUnity.UITk.Runtime")]
 namespace Febucci.TextAnimatorForUnity

@@ -5,7 +5,7 @@
 // - WEBSITE: https://www.textanimatorforgames.com/
 // =======================================================
 
-using System.Globalization;
+﻿using System.Globalization;
 using Febucci.TextAnimatorCore;
 using Febucci.TextAnimatorCore.Text;
 

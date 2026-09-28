@@ -13,6 +13,7 @@ AssetOrigin:
   serializedVersion: 1
   productId: 341308
   packageName: Text Animator for Unity | UI Toolkit and Text Mesh Pro
-  packageVersion: 3.14.0
-  assetPath: Packages/com.febucci.text-animator-unity/Samples~/Typewriter Sounds/TAnimSoundWriter.cs
-  uploadId: 949864
+  packageVersion: 3.20.1
+  assetPath: Assets/Samples/Text Animator for Unity by Febucci/3.14.0/Typewriter
+    Sounds Example/TAnimSoundWriter.cs
+  uploadId: 997180

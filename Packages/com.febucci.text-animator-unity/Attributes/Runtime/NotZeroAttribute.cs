@@ -5,7 +5,7 @@
 // - WEBSITE: https://www.textanimatorforgames.com/
 // =======================================================
 
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Febucci.Attributes
 {

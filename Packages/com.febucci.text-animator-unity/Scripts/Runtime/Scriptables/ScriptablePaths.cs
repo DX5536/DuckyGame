@@ -5,7 +5,7 @@
 // - WEBSITE: https://www.textanimatorforgames.com/
 // =======================================================
 
-namespace Febucci.TextAnimatorForUnity
+﻿namespace Febucci.TextAnimatorForUnity
 {
     public static class ScriptablePaths
     {

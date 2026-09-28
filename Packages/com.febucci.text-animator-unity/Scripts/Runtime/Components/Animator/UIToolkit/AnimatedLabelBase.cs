@@ -5,7 +5,7 @@
 // - WEBSITE: https://www.textanimatorforgames.com/
 // =======================================================
 
-#if UNITY_2023_2_OR_NEWER
+﻿#if UNITY_2023_2_OR_NEWER
 #define CAN_USE_UXML_DECORATORS
 #endif
 
@@ -306,11 +306,14 @@ namespace Febucci.TextAnimatorForUnity.UIToolkit
             animator.effectsDatabase = BehaviorsDatabase;
             animator.stylesDatabase = StyleSheetDatabase;
 
+            ResetAnimationTime();
             RegisterCallback<AttachToPanelEvent>(OnAttachedToPanel);
         }
 
         void OnAttachedToPanel(AttachToPanelEvent evt)
         {
+            ResetAnimationTime();
+
             if (Application.isPlaying && Typewriter != null)
             {
                 Typewriter.ActionProviders = GetActionProviders();
@@ -394,6 +397,8 @@ namespace Febucci.TextAnimatorForUnity.UIToolkit
         float lastTime = 0;
         TypewriterSettings settings;
 
+        void ResetAnimationTime() => lastTime = GetCurrentTime();
+
         protected void Animate()
         {
             float currentTime = GetCurrentTime();
@@ -401,6 +406,28 @@ namespace Febucci.TextAnimatorForUnity.UIToolkit
             lastTime = currentTime;
             animator.Animate(delta);
         }
+
+
+        /// <summary>
+        /// Returns true if text animator is currently paused
+        /// </summary>
+        public bool IsAnimationPaused
+            => animator.isAnimationPaused;
+
+
+        /// <summary>
+        /// Resumes animation starting from pause point
+        /// </summary>
+        public void PauseAnimation()
+            => animator.PauseAnimation();
+
+
+        /// <summary>
+        /// Pauses animation and freezes current char's status
+        /// </summary>
+        public void ResumeAnimation()
+            => animator.ResumeAnimation();
+
 
         public void SetTextToSource(string text)
         {

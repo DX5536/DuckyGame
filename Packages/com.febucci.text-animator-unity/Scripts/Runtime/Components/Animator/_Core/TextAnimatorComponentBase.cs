@@ -372,6 +372,27 @@ namespace Febucci.TextAnimatorForUnity
             _wrapper.Animate(deltaTime);
         }
 
+
+        /// <summary>
+        /// Returns true if text animator is currently paused
+        /// </summary>
+        public bool IsAnimationPaused 
+            => Wrapper.isAnimationPaused;
+
+
+        /// <summary>
+        /// Resumes animation starting from pause point
+        /// </summary>
+        public void PauseAnimation() 
+            => Wrapper.PauseAnimation();
+
+
+        /// <summary>
+        /// Pauses animation and freezes current char's status
+        /// </summary>
+        public void ResumeAnimation() 
+            => Wrapper.ResumeAnimation();
+
         #endregion
 
         /// <summary>

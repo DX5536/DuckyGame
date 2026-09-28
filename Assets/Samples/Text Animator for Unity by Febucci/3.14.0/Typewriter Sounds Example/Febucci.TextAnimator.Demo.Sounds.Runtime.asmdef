@@ -13,7 +13,15 @@
         "Febucci.TextAnimatorCore.dll"
     ],
     "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
+    "defineConstraints": [
+        "TANIM_AUDIO_PRESENT"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.modules.audio",
+            "expression": "1.0.0",
+            "define": "TANIM_AUDIO_PRESENT"
+        }
+    ],
     "noEngineReferences": false
 }

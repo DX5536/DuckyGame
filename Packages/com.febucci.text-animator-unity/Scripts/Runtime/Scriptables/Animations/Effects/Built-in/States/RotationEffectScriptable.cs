@@ -5,7 +5,7 @@
 // - WEBSITE: https://www.textanimatorforgames.com/
 // =======================================================
 
-using Febucci.TextAnimatorCore.BuiltIn;
+﻿using Febucci.TextAnimatorCore.BuiltIn;
 using UnityEngine;
 using Vector3 = Febucci.Numbers.Vector3;
 

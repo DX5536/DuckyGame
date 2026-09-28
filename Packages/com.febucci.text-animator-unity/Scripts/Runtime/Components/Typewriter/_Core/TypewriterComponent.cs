@@ -5,7 +5,7 @@
 // - WEBSITE: https://www.textanimatorforgames.com/
 // =======================================================
 
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Febucci.TextAnimatorCore.Data;
 using Febucci.TextAnimatorCore.Settings;
@@ -281,6 +281,9 @@ namespace Febucci.TextAnimatorForUnity
         /// <inheritdoc cref="ITypewriterProvider.SkipTypewriter"/>
         public void SkipTypewriter() => Wrapper.SkipTypewriter();
 
+        /// <inheritdoc cref="ITypewriterProvider.SkipCurrentAction"/>
+        public bool SkipCurrentAction() => Wrapper.SkipCurrentAction();
+
 
         #region Typewriter
 
@@ -289,6 +292,9 @@ namespace Febucci.TextAnimatorForUnity
 
         /// <inheritdoc cref="ITypewriterProvider.IsShowingText"/>
         public bool IsShowingText => Wrapper.IsShowingText;
+
+        /// <inheritdoc cref="ITypewriterProvider.IsWaitingForAction"/>
+        public bool IsWaitingForAction => Wrapper.IsWaitingForAction;
 
 
         /// <inheritdoc cref="ITypewriterProvider.StartShowingText"/>

@@ -5,6 +5,7 @@
 // - WEBSITE: https://www.textanimatorforgames.com/
 // =======================================================
 
+﻿#if TANIM_AUDIO_PRESENT
 using System.Collections;
 using Febucci.TextAnimatorCore.Typing;
 using UnityEngine;
@@ -26,3 +27,4 @@ namespace Febucci.TextAnimatorForUnity.Actions
         }
     }
 }
+#endif
