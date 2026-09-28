@@ -108,7 +108,7 @@
       }
     },
     "com.unity.2d.tilemap.extras": {
-      "version": "6.0.2",
+      "version": "6.0.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -119,11 +119,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.tooling": {
-      "version": "1.0.3",
+      "version": "1.0.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.2d.common": "12.0.3",
+        "com.unity.2d.common": "12.0.4",
         "com.unity.modules.uielements": "1.0.0"
       },
       "url": "https://packages.unity.com"
@@ -207,7 +207,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.27",
+      "version": "2.0.28",
       "depth": 0,
       "source": "registry",
       "dependencies": {
