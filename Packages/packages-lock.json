@@ -216,8 +216,8 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.inputsystem": {
-      "version": "1.18.0",
-      "depth": 0,
+      "version": "1.19.0",
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.modules.uielements": "1.0.0"
@@ -402,6 +402,41 @@
       "source": "git",
       "dependencies": {},
       "hash": "4c0c8ef55129c1c93fd3d3419536ca0cc533335f"
+    },
+    "dev.yarnspinner.unity.addons.classicrpg": {
+      "version": "file:dev.yarnspinner.unity.addons.classicrpg",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "dev.yarnspinner.unity": "3.2.0",
+        "com.unity.cinemachine": "3.1.7",
+        "com.unity.inputsystem": "1.19.0"
+      }
+    },
+    "dev.yarnspinner.unity.addons.snaaake": {
+      "version": "file:dev.yarnspinner.unity.addons.snaaake",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "dev.yarnspinner.unity": "3.2.1"
+      }
+    },
+    "dev.yarnspinner.unity.addons.textanimator": {
+      "version": "file:dev.yarnspinner.unity.addons.textanimator",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "dev.yarnspinner.unity": "3.1.0"
+      }
+    },
+    "dev.yarnspinner.unity.addons.textanimator-extras": {
+      "version": "file:dev.yarnspinner.unity.addons.textanimator-extras",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "dev.yarnspinner.unity": "3.1.0",
+        "dev.yarnspinner.unity.addons.textanimator": "3.1.0"
+      }
     },
     "dev.yarnspinner.unity.samples": {
       "version": "https://github.com/YarnSpinnerTool/YarnSpinner-Unity-Samples.git#current",
